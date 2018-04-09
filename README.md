@@ -1,5 +1,6 @@
-** TITRE du README **
+Ma config
+=========
 
-*Commit 1
+Ce dépot est un exemple de configuration de son environnement linux
 
-*Commit 2
+#TODO Ajout d'un script d'initialisation
