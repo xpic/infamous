@@ -18,18 +18,11 @@
 (global-set-key (kbd "C-c C-e") 'py-execute-region)
 ;;(standard-display-european t)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (whiteboard)))
  '(linum-format "%3d │ ")
  '(ps-use-face-background nil))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+
  '(fringe ((t (:background "black" :foreground "wheat" :weight bold))))
  '(linum ((t (:background "black" :foreground "yellow" :weight bold)))))
 (put 'upcase-region 'disabled nil)
