@@ -1,3 +1,4 @@
-** TITRE du README **
+CONFIGS
+=======
 
-*Commit 1
+Fichiers importants de ma config
