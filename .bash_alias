@@ -1,0 +1,11 @@
+# d'efinition des alias (non export'es)
+
+alias 	clr='tput clear'
+alias 	hst=history
+alias   lf='ls -FC'
+alias   lr='ls -dl'
+alias   NET="rm -f *~ .*~ \#*\# XtermLog.* core"
+
+alias   del='stty erase "^?"'
+alias   bs='stty erase "^h"'
+
