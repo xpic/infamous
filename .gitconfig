@@ -42,6 +42,7 @@
 	fp = format-patch
 	g = grep -p
 	l = log --graph
+	ll = log --graph --pretty=oneline --abbrev-commit
 	##########
 	ls = ls-files
 	lsf = !git ls-files | grep -i
