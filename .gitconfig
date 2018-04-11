@@ -1,8 +1,108 @@
 [user]
 	email = xavier.pic.2@outlook.fr
 	name = Xavier Pic
-
+	username = xpic
 [push]
 	default = matching
 [core]
-	excludesFile = /home/xpic/.gitignore
+	excludesFile = ~/.gitignore
+[github]
+	user = xpic
+	token = token
+[alias]
+	a = add
+	al =add --all
+	##########
+	ap = apply
+	##########
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	br = branch -r
+	##########
+	c = commit -am
+	cl = clone
+	cp = cherry-pick
+	d = diff
+	##########
+	f = fetch
+	fo = fetch origin
+	fu = fetch upstream
+	##########
+	fp = format-patch
+	g = grep -p
+	l = log
+	##########
+	ls = ls-files
+	lsf = !git ls-files | grep -i
+	##########
+	m = merge
+	ma = merge --abort
+	mc = merge --continue
+	ms = merge --skip
+	##########
+	o = checkout
+	ob = checkout -b
+	##########
+	p = push
+	po = push origin
+	pao = push --all origin
+	pfo = push -f origin
+	puo = push -u origin
+	##########
+	pom = push origin master
+	paom = push --all origin master
+	pfom = push -f origin master
+	puom = push -u origin master
+	##########
+	psoc = !git push origin $(git bc)
+	psaoc = !git push --all origin $(git bc)
+ 	psfoc = !git push -f origin $(git bc)
+	psuoc = !git push -u origin $(git bc)
+	psdc = !git push origin :$(git bc)
+	##########
+	pu = pull
+	pub = pull --rebase
+	##########
+	plo = pull origin
+	pbo = pull --rebase origin
+	plom = pull origin master
+	ploc = !git pull origin $(git bc)
+	pbom = pull --rebase origin master
+	pboc = !git pull --rebase origin $(git bc)
+	##########
+	plu = pull upstream
+	plum = pull upstream master
+	pluc = !git pull upstream $(git bc)
+	pbum = pull --rebase upstream master
+	pbuc = !git pull --rebase upstream $(git bc)
+	##########
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase --skip
+	##########
+	re = reset
+	rh = reset HEAD
+	reh = reset --hard
+	rem = reset --mixed
+	res = reset --soft
+	rehh = reset --hard HEAD
+	remh = reset --mixed HEAD
+	resh = reset --soft HEAD
+	##########
+	rmf = rm -f
+	rmrf = rm -r -f
+	##########
+	s = status
+	sb = status -s -b
+	##########
+	sa = stash apply
+	sc = stash clear
+	sd = stash drop
+	sl = stash list
+	sp = stash pop
+	ss = stash save
+	sw = stash show
+	st = !git stash list | wc -l 2>/dev/null | grep -oEi '[0-9][0-9]*'
