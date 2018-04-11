@@ -41,7 +41,7 @@
 	##########
 	fp = format-patch
 	g = grep -p
-	l = log
+	l = log --graph
 	##########
 	ls = ls-files
 	lsf = !git ls-files | grep -i
