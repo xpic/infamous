@@ -1,4 +1,4 @@
 Ubuntu configuration program
 ============================
 
-Use the command "make" to install the configuration
+Use the command "source install.sh" to install the configuration
