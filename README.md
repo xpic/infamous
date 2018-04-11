@@ -1,6 +1,4 @@
-Ma config
-=========
+Ubuntu configuration program
+============================
 
-Ce dépot est un exemple de configuration de son environnement linux
-
-#TODO Ajout d'un script d'initialisation
+Use the command "make" to install the configuration
