@@ -37,6 +37,7 @@
 	g = grep -p
 	l = log --graph
 	ll = log --graph --pretty=oneline --abbrev-commit
+	lll = log --graph --all --format=format:'%C(yellow)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(blue)%d%C(reset)' --abbrev-commit --date=relative
 	##########
 	ls = ls-files
 	lsf = !git ls-files | grep -i
