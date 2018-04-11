@@ -1,0 +1,8 @@
+[user]
+	email = xavier.pic.2@outlook.fr
+	name = Xavier Pic
+
+[push]
+	default = matching
+[core]
+	excludesFile = /home/xpic/.gitignore
