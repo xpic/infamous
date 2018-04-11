@@ -19,10 +19,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[color "status"]
-	added = green bold
-	changed = yellow bold
-	untracked = red bold
 [alias]
 	a = add
 	al =add --all
