@@ -33,25 +33,37 @@ if fgrep -xq `whoami` ~xpic/.white_list ; then
     export jaune=$'\e[1;33m'
     export vert=$'\e[1;32m'
     reset_color=$'\e[m'
-    SVNP_HUGE_REPO_EXCLUDE_PATH="nufw-svn$|/tags$|/branches$"
+    #SVNP_HUGE_REPO_EXCLUDE_PATH="nufw-svn$|/tags$|/branches$"
     . /bin/subversion-prompt
+    parse_svn_branch() {
+	  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (~svn\033[01;32m{'$(parse_svn_url)'}\033[01;35m['$(parse_svn_rev)']::"$1") " }'
+    }
+    parse_svn_url() {
+	svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+    }
+    parse_svn_repository_root() {
+	svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+    }
+    parse_svn_rev(){
+	svn info 2>/dev/null | sed -ne 's#^Revision: ##p'
+    }
     export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch
     if [ `whoami` = root ]; then
 	PS4='\033[1;31m\$++\033[00m '
 	PS3="$rouge\$?> $reset_color"
 	PS2='${debian_chroot:+($debian_chroot)}\[\033[1;31m\]\$ >\[\033[00m\] ' 
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;31m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1) \[\033[01;31m\]\$\n>\[\033[00m\] '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;31m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch) \[\033[01;31m\]\$\n>\[\033[00m\] '
     elif [ `whoami` = xpic ];then
 	PS4='\033[1;33m\$++\033[00m '
 	PS3="$jaune\$?>$reset_color " 
 	PS2='${debian_chroot:+($debian_chroot)}\[\033[1;33m\]\$ >\[\033[00m\] ' 
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;33m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(__svn_stat) \[\033[01;33m\]\$\n>\[\033[00m\] '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;33m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch) \[\033[01;33m\]\$\n>\[\033[00m\] '
     else
 	PS4='\033[1;34m\$++\033[00m '
 	PS3="$vert\$?>$reset_color "
 	PS2='${debian_chroot:+($debian_chroot)}\[\033[1;34m\]\$ >\[\033[00m\] ' 
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;32m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1) \[\033[01;32m\]\$\n>\[\033[00m\] '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;32m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch) \[\033[01;32m\]\$\n>\[\033[00m\] '
     fi
     export PS4
     export PS3
