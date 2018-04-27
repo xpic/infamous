@@ -36,7 +36,7 @@ if fgrep -xq `whoami` ~xpic/.white_list ; then
     #SVNP_HUGE_REPO_EXCLUDE_PATH="nufw-svn$|/tags$|/branches$"
     . /bin/subversion-prompt
     parse_svn_branch() {
-	  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (~svn\033[01;32m{'$(parse_svn_url)'}\033[01;35m['$(parse_svn_rev)']::"$1") " }'
+	  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (~svn/\033[01;32m{'$(parse_svn_repository_root)'\033[01;35m"$1"\033[01;32m}::['$(parse_svn_rev)']\033[01;35m) "}'
     }
     parse_svn_url() {
 	svn info 2>/dev/null | sed -ne 's#^URL: ##p'
@@ -53,12 +53,12 @@ if fgrep -xq `whoami` ~xpic/.white_list ; then
 	PS4='\033[1;31m\$++\033[00m '
 	PS3="$rouge\$?> $reset_color"
 	PS2='${debian_chroot:+($debian_chroot)}\[\033[1;31m\]\$ >\[\033[00m\] ' 
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;31m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch) \[\033[01;31m\]\$\n>\[\033[00m\] '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;31m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch)\[\033[01;31m\]\$\n>\[\033[00m\] '
     elif [ `whoami` = xpic ];then
 	PS4='\033[1;33m\$++\033[00m '
 	PS3="$jaune\$?>$reset_color " 
 	PS2='${debian_chroot:+($debian_chroot)}\[\033[1;33m\]\$ >\[\033[00m\] ' 
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;33m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\]$(__git_ps1)$(parse_svn_branch) \[\033[01;33m\]\$\n>\[\033[00m\] '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[01;33m\] : \[\033[01;31m\]{ \w }\[\033[01;35m\] $(__git_ps1)$(parse_svn_branch)\[\033[01;33m\]\$\n>\[\033[00m\] '
     else
 	PS4='\033[1;34m\$++\033[00m '
 	PS3="$vert\$?>$reset_color "
